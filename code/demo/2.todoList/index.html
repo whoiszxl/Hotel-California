@@ -12,10 +12,18 @@
         <input type="text" v-model="inputValue">
         <button v-on:click="handleBtnClick">提交</button>
         <ul>
-            <li v-for="item in list">{{item}}</li>
+            <!-- <li v-for="item in list">{{item}}</li> -->
+            <todo-item v-bind:content="item" v-for="item in list"></todo-item>
         </ul>
 
         <script>
+
+            //创建全局组件
+            Vue.component("TodoItem", {
+                props: ['content'],//props可以从v-bind这里接收数据
+                template: "<li>{{content}}</li>"
+            });
+
             var app = new Vue({
                 el: '#app',
                 data: {
