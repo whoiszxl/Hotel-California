@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../0.library/vue.min.js"></script>
+    <title>Vue的模板语法</title>
+</head>
+<body>
+    <div id="root">
+        <div>{{fullName}}</div>
+        <div>{{age}}</div>
+        <div>{{fullName2()}}</div>
+    </div>
+
+    <script>
+
+        var vm = new Vue({
+            el: "#root",
+            data: {
+                firstName: 'chen',
+                lastName: 'huixian',
+                age: '24'
+            },
+
+            //监听firstName,具有缓存作用,和计算属性一样,但是代码复杂度比较大
+            watch: {
+                firstName: function() {
+                    console.log("watch execute calc once");
+                    return this.firstName + ' -- ' + this.lastName;
+                }
+            },
+            
+            //方法计算,不会缓存
+            methods: {
+                fullName2: function() {
+                    console.log("method execute calc once");
+                    return this.firstName + ' -- ' + this.lastName;
+                }
+            },
+
+            //计算属性可以缓存,在当前数据没有发生变化的时候不会重新渲染
+            computed: {
+                fullName: function() {
+                    console.log("calc once");
+                    return this.firstName + ' -- ' + this.lastName;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
