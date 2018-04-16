@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../0.library/vue.min.js"></script>
+    <title>Vue的模板语法</title>
+</head>
+<body>
+    <div id="root">
+        <div>{{html_message}}</div>
+        <div v-text="html_message"></div>
+        <div v-html="html_message"></div>
+    </div>
+
+    <script>
+
+        var vm = new Vue({
+            el: "#root",
+            data: {
+                message:"hello vue",//v-text:只能以文本展示
+                html_message: "<h1>hello world</h1>"//v-html:可以解析html代码
+            },
+            methods: {
+                handleClick: function() {
+                    alert("click");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
