@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../0.library/vue.min.js"></script>
+    <title>Vue样式绑定</title>
+
+    <style>
+        .activated {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div @click="handleDivClick"
+            :class="{activated: isActivated}"
+        >{{message}}</div>
+    </div>
+
+    <script>
+
+        var vm = new Vue({
+            el: "#root",
+            data: {
+                message:"hello vue",
+                isActivated:false
+            },
+            methods: {
+                handleDivClick: function() {
+                    this.isActivated = !this.isActivated;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
