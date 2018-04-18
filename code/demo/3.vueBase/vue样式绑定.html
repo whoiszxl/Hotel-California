@@ -18,15 +18,24 @@
         <div @click="handleDivClick"
             :class="{activated: isActivated}"
         >{{message}}</div>
+
+        <div :style="styleObj">
+            直接style样式绑定
+        </div> 
     </div>
 
+     
+        
     <script>
 
         var vm = new Vue({
             el: "#root",
             data: {
                 message:"hello vue",
-                isActivated:false
+                isActivated:false,
+                styleObj: {
+                    color: "red"
+                }
             },
             methods: {
                 handleDivClick: function() {
