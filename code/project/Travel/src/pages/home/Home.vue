@@ -1,5 +1,8 @@
 <template>
-  <div>home</div>
+  <div>
+    <div>home</div>
+    <router-link to="/list">跳转到列表页</router-link>
+  </div>
 </template>
 
 <script>
