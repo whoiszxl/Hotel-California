@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../0.library/vue.min.js"></script>
+    <title>2.组件参数校验和props特性</title>
+</head>
+<body>
+    <div id="root">
+        <xl-item :content="123"></xl-item>
+    </div>
+
+    <script>
+
+        Vue.component('xl-item',{
+            props: {
+                content: [Number]
+            },
+            template: '<h1>{{content}}</h1>'
+        });
+
+        var vm = new Vue({
+            el: "#root",
+            data: {
+                message:"hello vue"
+            },
+            methods: {
+                handleClick: function() {
+                    alert("click");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
