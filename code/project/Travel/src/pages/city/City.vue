@@ -2,8 +2,8 @@
   <div>
     <city-header></city-header>
     <city-search></city-search>
-    <city-list></city-list>
-    <city-alphabet></city-alphabet>
+    <city-list :cities="cities" :hot="hotCities"></city-list>
+    <city-alphabet :cities="cities"></city-alphabet>
   </div>
 </template>
 
@@ -24,33 +24,27 @@ export default {
   },
   data () {
     return {
-      city: '',
-      swiperList: [],
-      iconList: [],
-      recommendList: [],
-      weekendList: []
+      cities: {},
+      hotCities: []
     }
   },
   methods: {
-    getHomeInfo () {
-      axios.get('/api/index.json')
-        .then(this.getHomeInfoSucc)
+    getCityInfo () {
+      axios.get('/api/city.json')
+        .then(this.getCityInfoSucc)
     },
-    getHomeInfoSucc (res) {
+    getCityInfoSucc (res) {
       res = res.data
       if (res.ret && res.data) {
         const data = res.data
-        this.city = data.city
-        this.swiperList = data.swiperList
-        this.iconList = data.iconList
-        this.recommendList = data.recommendList
-        this.weekendList = data.weekendList
+        this.cities = data.cities
+        this.hotCities = data.hotCities
       }
       console.log(res)
     }
   },
   mounted () {
-    this.getHomeInfo()
+    this.getCityInfo()
   }
 }
 </script>
